@@ -3,6 +3,8 @@ package com.example.jwt_study.service;
 import com.example.jwt_study.data.dto.UserDTO;
 import com.example.jwt_study.data.entity.User;
 
+import java.time.LocalDate;
+
 public interface UserService {
 
     UserDTO getUser(Long id);
@@ -19,7 +21,7 @@ public interface UserService {
                 .username(user.getUsername())
                 .password(user.getPassword())
                 .phoneNumber(user.getPhoneNumber())
-                .birthday(user.getBirthday())
+                .birthday(String.valueOf(user.getBirthday()))
                 .build();
     }
 
@@ -31,7 +33,7 @@ public interface UserService {
                 .username(userDTO.getUsername())
                 .password(userDTO.getPassword())
                 .phoneNumber(userDTO.getPhoneNumber())
-                .birthday(userDTO.getBirthday())
+                .birthday(LocalDate.parse(userDTO.getBirthday()))
                 .build();
     }
 }

@@ -20,12 +20,13 @@ public class UserDTO {
   private String nickname;
   private String phoneNumber;
   private LocalDate joinDate;
-  private LocalDate birthday;
+  private String birthday;
   private UserRole role;
 
   public enum UserRole {
     ADMIN,
     USER
   }
+
 
 }

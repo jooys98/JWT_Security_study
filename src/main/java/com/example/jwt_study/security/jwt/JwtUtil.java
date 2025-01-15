@@ -15,7 +15,7 @@ public class JwtUtil {
   private SecretKey secretKey;
 
   //이 클래스에서 과정 1번
-  public JwtUtil(@Value("${app.props.jwt.secret.key}") String secretKeyString) {
+  public JwtUtil(@Value("${jwt-secret-key}") String secretKeyString) {
       //yml에 만들어놓은 문자열을 가지고 와서 이걸 토큰을 만드는데 사용할 시크릿 키로 변환
       // 시크릿키는 토큰을 만들어줄때와 토큰을 검증할 때 쓰이게 됨
     System.out.println("Loaded secret key: " + secretKeyString); // 디버깅 메시지
@@ -63,7 +63,7 @@ public class JwtUtil {
     return Jwts.builder()
         .claim("category", category)
         .claim("username", username)
-        .claim("role", role)
+        .claim("role","ROLE_"+role)
         .issuedAt(new Date(System.currentTimeMillis()))
         .expiration(new Date(System.currentTimeMillis() + expireMs))
         .signWith(this.secretKey)

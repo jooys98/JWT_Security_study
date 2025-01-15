@@ -79,7 +79,7 @@ Redis 설정 (RedisConfig)*/
                 //페이지별 접근 권한 설정
                 .authorizeHttpRequests(authorize -> // 인증 없이도 접근 가능한 경로들
                         authorize.requestMatchers("/", "/api/users/join", "/api/users/id", "/api/users/check",
-                                        "/api/login", "/api/logout", "/api/posts/**", "/api/posts/search",
+                                        "/login", "/logout", "/api/posts/**", "/api/posts/search",
                                         "/api/posts/search/tag", "/api/posts/all", "/api/posts/all2", "/api/posts/{id}",
                                         "/api/main-categories", "/api/sub-categories")
                                 .permitAll()
@@ -96,7 +96,7 @@ Redis 설정 (RedisConfig)*/
             //접근 허용할 도메인 설정
             config.setAllowedOrigins(
                     Arrays.asList("http://localhost:3000", "http://localhost:3001",
-                            "http://localhost:3002", "http://localhost", "http://15.164.52.27", "http://15.164.52.27:80")
+                            "http://localhost:3002", "http://localhost")
             );
             config.addAllowedHeader("*"); // 모든 헤더 허용
             config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));

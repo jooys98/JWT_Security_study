@@ -30,7 +30,7 @@ public class UserController {
   }
 // ResponseEntity : HTTP 응답을 나타내는 클래스 (상태코드 , 헤더 , 본문 포함 할 수 있음)
 //메서드 안 로직의 작동여부 응답 메세지 정확함
-  @PostMapping("join")
+  @PostMapping("/join")
   public ResponseEntity<String> joinUser(@RequestBody UserDTO userDTO) {
     String password = passwordEncoder.encode(userDTO.getPassword());
     //사용자가 입력한 비밀번호를 암호화

@@ -21,7 +21,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 //인증 요청 -> JwtFilter -> JWT 토큰 검증 -> CustomUserDetails -> 요청 처리
 public class JwtFilter extends OncePerRequestFilter {
-
+//서블릿 필터 , response,request
   private final JwtUtil jwtUtil;
 
   @Override
@@ -31,11 +31,15 @@ public class JwtFilter extends OncePerRequestFilter {
     String requestURI = request.getRequestURI();
 
     // 인증이 필요 없는 공개 API 경로인지 확인
-    if (requestURI.startsWith("/api/posts/search") ||
+    if (requestURI.startsWith("/api/users/join") ||
+            requestURI.startsWith("/users/check") ||
+            requestURI.startsWith("/login") ||
+            requestURI.startsWith("/logout") ||
             requestURI.startsWith("/api/posts/all") ||
             requestURI.startsWith("/api/posts/{id}") || // 필요에 따라 추가
             requestURI.startsWith("/api/posts/search/tag") ||
             requestURI.startsWith("/api/sub-categories") ||
+
             requestURI.startsWith("/api/main-categories")) {
       filterChain.doFilter(request, response); // 인증 없이 다음 필터로 진행
       return;

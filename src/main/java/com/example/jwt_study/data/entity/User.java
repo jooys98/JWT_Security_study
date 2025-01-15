@@ -27,8 +27,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Getter
 @Setter
-@ToString(exclude = {"posts"})
-@EqualsAndHashCode(exclude = {"posts"})
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -38,7 +36,7 @@ public class User {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "id", nullable = false)
+  @Column(name = "id", nullable = false, unique = true)
   private Long id;
 
   @NotEmpty(message = "비밀번호는 비어있을 수 없습니다.")
@@ -68,10 +66,6 @@ public class User {
     ADMIN,
     USER
   }
-
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
-  @Builder.Default
-  private List<Post> posts = new ArrayList<>();
 
 
 }
