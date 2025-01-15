@@ -7,7 +7,8 @@
 1. 클라이언트의 로그인 요청
     * username과 password를 담아서 request 전송
 2. LoginFilter
-    * request에서 username과 password 추출
+    * request(json) 에서 loginRequestDTO (java객체)로 변환 (ObjectMapper)
+    * 자바객체로 변환한 정보를 UsernamePasswordAuthenticationToken 필터 양식에 맞게 바꾸고
     * 이 정보를 UsernamePasswordAuthenticationToken 객체로 변환
     * AuthenticationManager에게 인증 처리 위임
 3. AuthenticationManager
@@ -34,5 +35,8 @@
 4. 인증에 관련된 쿠키 삭제
 5. LogoutSuccessHandler 실행
 * 클라이언트에 성공 응답 전송
+
+Request : 
+["Content-Type"] = "application/x-www-form-urlencoded" 에서 json 으로 수정 
 
 😀notion 링크 -> https://whispering-shoemaker-e1d.notion.site/Spring-Security-JWT-17a45e7562a580e98974c0a46935b33f?pvs=4
